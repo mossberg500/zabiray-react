@@ -1,32 +1,25 @@
+import React from 'react';
 import './App.css';
+import Header from './../src/app/components/Header'
+import Technologies from './../src/app/components/Technologies'
+import Offers from "./app/views/Offers/Offers";
+import Categories from "./app/views/categories/Categories";
 
 function App() {
     return (
-        <div>
-            <Header/>
-            <Technologies/>
+        <div className='app-wrapper'>
+            <Header />
+            <Technologies />
+            <nav>
+                <Categories/>
+            </nav>
+            <div>
+                <Offers />
+            </div>
         </div>
     );
 }
 
-const Technologies =  () => {
-    return(
-        <div className="App">
-            <ui>
-                <li>HTML</li>
-                <li>JS</li>
-            </ui>
-        </div>
-    )
-};
-const Header = () => {
-    return (
-        <div>
-            <p><a href='#'>Home</a></p>
-            <p><a href='#'>New Feed</a></p>
-            <p><a href='#'>Message</a></p>
-        </div>
-    )
-};
+
 
 export default App;
