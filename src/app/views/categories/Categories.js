@@ -1,5 +1,6 @@
 import React from 'react';
-import './categories.css';
+import './Categories.css';
+import CategoryItem from "./categoryItem/CategoryItem";
 
 const Categories = () => {
     return (
@@ -14,7 +15,7 @@ const Categories = () => {
                     <li
                         className="nav-item pointer">
                         <a class=" nav-link">
-                            <p></p>
+                            <p><CategoryItem/></p>
                         </a>
                     </li>
                 </ul>
