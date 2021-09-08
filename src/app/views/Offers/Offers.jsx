@@ -14,27 +14,14 @@ const Offers = () => {
                     <th>#</th>
                     <th>Название</th>
                     <th>Категория</th>
-                    <th>Приоритет</th>
+                    <th>Поставщик</th>
                     <th>Дата</th>
                     <th>Статус</th>
                     </thead>
                     <tbody>
                     <tr>
-                        <td><Offer/></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class=" form-check">
-                                <label class=" form-check-label">
-                                    <input class=" form-check-input" type=" checkbox" value=""></input>
-                                    <span class="form-check-sign">
-                    <span class="check"></span>
-                    </span>
-                                </label>
-                            </div>
-                        </td>
+                        <Offer id='1' name='Одеяло' categoryId='Электроодеяло' supplierId='Забирай' date='09-08-2021' />
+                        <Offer id='2' name='Яблоко' categoryId='Продукты' supplierId='Забирай' date='11-09-2021' />
                     </tr>
                     </tbody>
                 </table>

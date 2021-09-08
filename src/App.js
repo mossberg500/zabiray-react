@@ -1,19 +1,21 @@
 import React from 'react';
 import './App.css';
-import Header from './../src/app/components/Header'
-import Technologies from './../src/app/components/Technologies'
+
+
 import Offers from "./app/views/Offers/Offers";
 import Categories from "./app/views/categories/Categories";
+import Dialogs from "./app/components/Dialogs/Dialogs";
 
 function App() {
     return (
         <div className='app-wrapper'>
-            <Header />
-            <Technologies />
-            <nav>
+            <div className='header'>
+            <Dialogs />
+            </div>
+            <nav className='nav'>
                 <Categories/>
             </nav>
-            <div>
+            <div className='content'>
                 <Offers />
             </div>
         </div>

@@ -10,6 +10,9 @@ const Categories = () => {
             <div className="logo"><a href="#s" className="simple-text logo-normal">
                 Creative Tim
             </a></div>
+
+
+
             <div className="sidebar-wrapper">
                 <ul className="nav">
                     <li
