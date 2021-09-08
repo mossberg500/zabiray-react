@@ -1,9 +1,11 @@
 import React from 'react';
-import './Dialogs.module.css'
+import s from'./Dialogs.module.css'
 
-const Dialogs = () => {
+const Dialogs = (props) => {
         return (
-            <div>mnm,n,mlkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkknmnm</div>
+            <div className={s.headercon}>
+                Dialogs
+            </div>
         )
     };
 
