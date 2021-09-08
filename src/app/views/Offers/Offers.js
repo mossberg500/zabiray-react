@@ -1,5 +1,6 @@
 import React from 'react';
 import './Offers.css';
+import Offer from "./Offer/Offer";
 
 const Offers = () => {
     return (
@@ -19,7 +20,7 @@ const Offers = () => {
                     </thead>
                     <tbody>
                     <tr>
-                        <td></td>
+                        <td><Offer/></td>
                         <td></td>
                         <td></td>
                         <td></td>

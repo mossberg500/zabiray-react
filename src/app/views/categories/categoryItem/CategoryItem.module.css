@@ -1,3 +1,6 @@
 .item {
     color: #6ec071;
 }
+.item.active {
+    color: #cc5275;
+}
