@@ -9,6 +9,11 @@
 
 }
 
+.dialogsitems .active {
+    color: #978d20;
+
+}
+
 .dialog {
 
 }
@@ -16,7 +21,6 @@
 .messages {
     padding: 10px;
 }
-
 
 
 .message {

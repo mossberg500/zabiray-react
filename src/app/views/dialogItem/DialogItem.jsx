@@ -1,34 +1,54 @@
 import React from 'react';
 import d from './DialogItem.module.css'
+import {NavLink} from "react-router-dom";
+
+const DialogContext = (props) => {
+    let path = "/dialogitem/" + props.id;
+    return (
+        <div>
+            <div className={d.dialog + ' ' + d.active}>
+                <NavLink to={path}>{props.name}</NavLink>
+            </div>
+
+        </div>
+    )
+}
+
+
+const Message = (props) => {
+    return (
+        <div>
+            <div className="{d.message}">{props.message}</div>
+        </div>
+
+    )
+};
+
 
 const DialogItem = (props) => {
-    return(
+    return (
         <div className={d.dialogs}>
             <div className={d.dialogsitems}>
-                <div className={d.dialog}>
-                    Oleg
-                </div>
-                <div className={d.dialog}>
-                    Andrey
-                </div>
-                <div className={d.dialog}>
-                    Sasha
-                </div>
-                <div className={d.dialog}>
-                    Sveta
-                </div>
-              <div className={d.dialog}>
-                    Victor
-                </div>
 
+                <DialogContext name="Oleg" id="1"/>
+                <DialogContext name="Andrey" id="2"/>
+                <DialogContext name="Sasha" id="3"/>
+                <DialogContext name="Sveta" id="4"/>
+                <DialogContext name="Victor" id="5"/>
+                <DialogContext name="Vlad" id="6"/>
             </div>
-            <div className={d.messages}>
-                <div className="{d.message}">Hi</div>
-                <div className="{d.message}">Hi is your</div>
-                <div className="{d.message}">Hi hi</div>
 
+            <div className={d.message}>
+                <Message message="Hi"/>
+                <Message message="How are you"/>
+                <Message message="Hi hi"/>
+                <Message message="Good moning"/>
+                <Message message="Good after"/>
+                <Message message="List"/>
             </div>
+
         </div>
-    )};
+    )
+};
 
 export default DialogItem;
