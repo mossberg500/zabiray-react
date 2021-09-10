@@ -5,9 +5,13 @@ import './App.css';
 import Offers from "./app/views/Offers/Offers";
 import Categories from "./app/views/categories/Categories";
 import Dialogs from "./app/components/Dialogs/Dialogs";
+import DialogItem from "./app/views/dialogItem/DialogItem";
+import Route from "react-router-dom/es/Route";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     return (
+        <BrowserRouter>
         <div className='app-wrapper'>
             <div className='header'>
             <Dialogs />
@@ -16,9 +20,12 @@ function App() {
                 <Categories/>
             </nav>
             <div className='content'>
-                <Offers />
+                <Route path='/dialogitem' component={DialogItem} />
+                <Route path='/offers' component={Offers} />
+
             </div>
         </div>
+        </BrowserRouter>
     );
 }
 

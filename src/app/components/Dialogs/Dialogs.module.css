@@ -1,4 +1,9 @@
-.headercon {
+.headercon a {
     grid-area: c;
-    background-color: #7ea1bd;
+  /*  background-color: #7ea1bd;*/
+    color: #ce8383;
+    text-decoration: none;
+}
+.headercon a.active {
+    color: #3e7b82;
 }

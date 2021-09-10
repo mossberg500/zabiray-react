@@ -11,6 +11,8 @@
 }
 .header {
     grid-area: h;
+    position: center ;
+    margin-left: 150px;
 }
 
 .nav {
