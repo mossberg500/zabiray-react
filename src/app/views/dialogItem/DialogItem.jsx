@@ -26,6 +26,13 @@ const Message = (props) => {
 
 
 const DialogItem = (props) => {
+    let dialogContextData = [{id: 1, name: 'Oleg'},
+        {id: 2, name: 'Andrey'},
+        {id: 3, name: 'Sasha'},
+        {id: 4, name: 'Sveta'},
+        {id: 5, name: 'Victor'},
+        {id: 6, name: 'Vlad'},
+    ]
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsitems}>
