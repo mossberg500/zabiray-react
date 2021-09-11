@@ -45,14 +45,20 @@ const DialogItem = (props) => {
     ]
 
     /* массив реакт jsx компонентов */
-    let dialogElements = [
+    let dialogElements = dialogContextData
+        .map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
+
+        /*[
         <DialogContext name={dialogContextData[0].name} id={dialogContextData[0].id} />,
         <DialogContext name={dialogContextData[1].name} id ={dialogContextData[1].id} />,
         <DialogContext name={dialogContextData[2].name} id ={dialogContextData[2].id} />,
         <DialogContext name={dialogContextData[3].name} id ={dialogContextData[3].id} />,
         <DialogContext name={dialogContextData[4].name} id ={dialogContextData[4].id} />,
         <DialogContext name={dialogContextData[5].name} id ={dialogContextData[5].id} />
-]
+]*/
+
+    let messagesElement = messageData
+        .map(mes=><Message message={mes.message}/>)
 
     return (
         <div className={d.dialogs}>
@@ -68,6 +74,7 @@ const DialogItem = (props) => {
             </div>
 
             <div className={d.message}>
+                { messagesElement }
                 {/*<Message message={messageData[0].message}/>
                 <Message message={messageData[1].message}/>
                 <Message message={messageData[2].message}/>
