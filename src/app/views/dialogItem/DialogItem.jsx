@@ -1,28 +1,7 @@
 import React from 'react';
 import d from './DialogItem.module.css'
-import {NavLink} from "react-router-dom";
-
-const DialogContext = (props) => {
-    let path = "/dialogitem/" + props.id;
-    return (
-        <div>
-            <div className={d.dialog + ' ' + d.active}>
-                <NavLink to={path}>{props.name}</NavLink>
-            </div>
-
-        </div>
-    )
-}
-
-
-const Message = (props) => {
-    return (
-        <div>
-            <div className="{d.message}">{props.message}</div>
-        </div>
-
-    )
-};
+import DialogContext from "./DialogContext/DialogContext";
+import Message from "./Message/Message";
 
 
 const DialogItem = (props) => {
@@ -48,41 +27,16 @@ const DialogItem = (props) => {
     let dialogElements = dialogContextData
         .map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
 
-        /*[
-        <DialogContext name={dialogContextData[0].name} id={dialogContextData[0].id} />,
-        <DialogContext name={dialogContextData[1].name} id ={dialogContextData[1].id} />,
-        <DialogContext name={dialogContextData[2].name} id ={dialogContextData[2].id} />,
-        <DialogContext name={dialogContextData[3].name} id ={dialogContextData[3].id} />,
-        <DialogContext name={dialogContextData[4].name} id ={dialogContextData[4].id} />,
-        <DialogContext name={dialogContextData[5].name} id ={dialogContextData[5].id} />
-]*/
-
     let messagesElement = messageData
         .map(mes=><Message message={mes.message}/>)
-
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsitems}>
                 {dialogElements}
-                {/* <DialogContext name={dialogContextData[0].name} id={dialogContextData[0].id}/>
-                <DialogContext name={dialogContextData[1].name} id={dialogContextData[1].id}/>
-                <DialogContext name={dialogContextData[2].name} id={dialogContextData[2].id}/>
-                <DialogContext name={dialogContextData[3].name} id={dialogContextData[3].id}/>
-                <DialogContext name={dialogContextData[4].name} id={dialogContextData[4].id}/>
-                <DialogContext name={dialogContextData[5].name} id={dialogContextData[5].id}/>*/}
-
             </div>
-
             <div className={d.message}>
                 { messagesElement }
-                {/*<Message message={messageData[0].message}/>
-                <Message message={messageData[1].message}/>
-                <Message message={messageData[2].message}/>
-                <Message message={messageData[3].message}/>
-                <Message message={messageData[4].message}/>
-                <Message message={messageData[5].message}/>*/}
             </div>
-
         </div>
     )
 };
