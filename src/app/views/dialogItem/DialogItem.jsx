@@ -5,7 +5,8 @@ import Message from "./Message/Message";
 
 
 const DialogItem = (props) => {
-    let dialogContextData = [
+
+    /*let dialogContextData = [
         {id: 1, name: 'Oleg'},
         {id: 2, name: 'Andrey'},
         {id: 3, name: 'Sasha'},
@@ -22,13 +23,11 @@ const DialogItem = (props) => {
         {id: 5, message: 'Good after'},
         {id: 6, message: 'List'}
     ]
-
+*/
     /* массив реакт jsx компонентов */
-    let dialogElements = dialogContextData
-        .map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
+    let dialogElements = props.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
 
-    let messagesElement = messageData
-        .map(mes=><Message message={mes.message}/>)
+    let messagesElement = props.messageData.map(mes=><Message message={mes.message}/>)
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsitems}>

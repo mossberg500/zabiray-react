@@ -9,7 +9,8 @@ import DialogItem from "./app/views/dialogItem/DialogItem";
 import Route from "react-router-dom/es/Route";
 import {BrowserRouter} from "react-router-dom";
 
-function App() {
+function App(props) {
+
     return (
         <BrowserRouter>
         <div className='app-wrapper'>
@@ -20,8 +21,11 @@ function App() {
                 <Categories/>
             </nav>
             <div className='content'>
-                <Route path='/dialogitem' component={DialogItem} />
+                {/*<Route path='/dialogitem' component={DialogItem} />
                 <Route path='/offers' component={Offers} />
+                */}
+                <Route path='/dialogitem' render={ ()=> <DialogItem dialogContextData={props.dialogContextData} messageData={props.messageData}/>} />
+                <Route path='/offers' render={ ()=> <Offers />} />
 
             </div>
         </div>
