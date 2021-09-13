@@ -13,14 +13,18 @@ const Offers = (props) => {
     let NewOffers = React.createRef();
 
     let addNewOffers = () => {
-
-        let text = NewOffers.current.value;
+       /* let text = NewOffers.current.value;*/
         /*alert(text);*/
         /*передаем данные в функцию из stat-ов*/
-
-        props.addNewOffers(text);
+        props.addNewOffers();
         // очищаем поле
-        NewOffers.current.value = ''
+        props.updateNewOffers('')
+        NewOffers.current.value=''
+    }
+
+    let onChangeOffers = () => {
+        let text = NewOffers.current.value;
+        props.updateNewOffers(text)
     }
 
     return (
@@ -33,7 +37,8 @@ const Offers = (props) => {
                 <div>
                     <div className="card-body table-responsive">
 
-                        <textarea ref={NewOffers}></textarea>
+                        {/*<textarea onChange={onChangeOffers} ref={NewOffers}value="фиксированное значение"/>*/}
+                        <textarea onChange={onChangeOffers} ref={NewOffers}value={props.newOffersName} />
 
 
 

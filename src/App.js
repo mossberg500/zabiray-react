@@ -26,7 +26,10 @@ function App(props) {
                 <Route path='/offers' component={Offers} />
                 */}
                 <Route path='/dialogitem' render={ ()=> <DialogItem dialogStat={props.state.dialogStat} />} />
-                <Route path='/offers' render={ ()=> <Offers offersStat={props.state.offerStat} addNewOffers={props.addNewOffers} />} />
+                <Route path='/offers' render={ ()=> <Offers offersStat={props.state.offerStat}
+                                                            newOffersName={props.state.newOffersName}
+                                                            updateNewOffers={props.updateNewOffers}
+                                                            addNewOffers={props.addNewOffers} />} />
 
             </div>
         </div>

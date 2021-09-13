@@ -23,20 +23,45 @@ let state = {
         offers: [
             {id: '1', name: 'Одеяло', categoryId: 'Электроодеяло', supplierId: 'Забирай', date: '09-08-2021'},
             {id: '2', name: 'Яблоко', categoryId: 'Продукты', supplierId: 'Забирай', date: '11-09-2021'},
-        ]
-    }
+        ],
+
+        newOffersName: 'фиксированное значение'
+    },
 };
 
-export let addNewOffers = (nameOff) => {
+export let addNewOffers = () => {
 
     let newOffer = {
         id: '5',
-        name: nameOff,
+        name: state.offerStat.newOffersName,
         categoryId: 'Электро',
         supplierId: 'Забирай',
         date: '13-09-2021'
     };
     state.offerStat.offers.push(newOffer);
+  //  state.offerStat.newOffersName='';
     renderEntireTree(state);
 }
+
+
+export let updateNewOffers = (newname) => {
+
+    state.offerStat.newOffersName = newname
+
+    /*let newOffer = {
+        id: '5',
+        name: state.offerStat.newOffersName,
+        categoryId: 'Электро',
+        supplierId: 'Забирай',
+        date: '13-09-2021'
+    };
+
+    state.offerStat.offers.push(newOffer);*/
+
+
+    renderEntireTree(state);
+}
+
+
+
 export default state;
