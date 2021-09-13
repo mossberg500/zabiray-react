@@ -24,8 +24,8 @@ function App(props) {
                 {/*<Route path='/dialogitem' component={DialogItem} />
                 <Route path='/offers' component={Offers} />
                 */}
-                <Route path='/dialogitem' render={ ()=> <DialogItem dialogContextData={props.dialogContextData} messageData={props.messageData}/>} />
-                <Route path='/offers' render={ ()=> <Offers />} />
+                <Route path='/dialogitem' render={ ()=> <DialogItem dialogStat={props.stat.dialogStat} />} />
+                <Route path='/offers' render={ ()=> <Offers offersStat={props.stat.offerStat} />} />
 
             </div>
         </div>

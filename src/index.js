@@ -28,7 +28,7 @@ let messageData = [
 
 ReactDOM.render(
  <React.StrictMode>
-   <App  dialogContextData={state.dialogContextData} messageData={state.messageData} />
+   <App  stat={state}   />
  </React.StrictMode>,
  document.getElementById('root')
 );

@@ -25,9 +25,9 @@ const DialogItem = (props) => {
     ]
 */
     /* массив реакт jsx компонентов */
-    let dialogElements = props.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
+    let dialogElements = props.dialogStat.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
 
-    let messagesElement = props.messageData.map(mes=><Message message={mes.message}/>)
+    let messagesElement = props.dialogStat.messageData.map(mes=><Message message={mes.message}/>)
     return (
         <div className={d.dialogs}>
             <div className={d.dialogsitems}>
