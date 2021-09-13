@@ -39,6 +39,4 @@ export let addNewOffers = (nameOff) => {
     state.offerStat.offers.push(newOffer);
     renderEntireTree(state);
 }
-
-
 export default state;
