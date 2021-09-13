@@ -7,7 +7,11 @@ const Offers = (props) => {
                                                               name={off.name}
                                                               categoryId={off.categoryId}
                                                               supplierId={off.supplierId}
-                                                              date={off.date} /> );
+                                                              date={off.date}/>);
+
+    let addNewOffers = () => {
+        alert('Hey');
+    };
 
 
     return (
@@ -16,6 +20,24 @@ const Offers = (props) => {
                 <h4 class="card-title">Список задач</h4>
             </div>
             <div class="card-body table-responsive">
+                <h3>список Offer</h3>
+                <div>
+                    <div className="card-body table-responsive">
+                        <textarea></textarea>
+                        <textarea></textarea>
+                        <textarea></textarea>
+                        <textarea></textarea>
+                        <textarea></textarea>
+
+                    </div>
+                    <div>
+                        {/* концепция callbeck-ов когда мы не вызываем функцию а отдаем её кому-то
+                        чтобы ее этот кто-то вызвал. */}
+                        <button onClick={ addNewOffers }>Добавить в список</button>
+                    </div>
+                </div>
+
+
                 <table class="table table-hover">
                     <thead class="text-warning">
                     <th>#</th>
@@ -27,9 +49,7 @@ const Offers = (props) => {
                     </thead>
                     <tbody>
                     <tr>
-                        { newOffers }
-                        {/*    <Offer id='1' name='Одеяло' categoryId='Электроодеяло' supplierId='Забирай' date='09-08-2021' />
-                        <Offer id='2' name='Яблоко' categoryId='Продукты' supplierId='Забирай' date='11-09-2021' />*/}
+                        {newOffers}
                     </tr>
                     </tbody>
                 </table>
