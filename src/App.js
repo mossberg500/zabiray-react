@@ -9,6 +9,7 @@ import DialogItem from "./app/views/dialogItem/DialogItem";
 import Route from "react-router-dom/es/Route";
 import {BrowserRouter} from "react-router-dom";
 
+
 function App(props) {
 
     return (
@@ -24,8 +25,8 @@ function App(props) {
                 {/*<Route path='/dialogitem' component={DialogItem} />
                 <Route path='/offers' component={Offers} />
                 */}
-                <Route path='/dialogitem' render={ ()=> <DialogItem dialogStat={props.stat.dialogStat} />} />
-                <Route path='/offers' render={ ()=> <Offers offersStat={props.stat.offerStat} />} />
+                <Route path='/dialogitem' render={ ()=> <DialogItem dialogStat={props.state.dialogStat} />} />
+                <Route path='/offers' render={ ()=> <Offers offersStat={props.state.offerStat} addNewOffers={props.addNewOffers} />} />
 
             </div>
         </div>
