@@ -6,30 +6,39 @@ import Message from "./Message/Message";
 
 const DialogItem = (props) => {
 
-    /*let dialogContextData = [
-        {id: 1, name: 'Oleg'},
-        {id: 2, name: 'Andrey'},
-        {id: 3, name: 'Sasha'},
-        {id: 4, name: 'Sveta'},
-        {id: 5, name: 'Victor'},
-        {id: 6, name: 'Vlad'}
-    ]
+    let NewDialogItem = React.createRef();
 
-    let messageData = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'How are you'},
-        {id: 3, message: 'Hi hi'},
-        {id: 4, message: 'Good moning'},
-        {id: 5, message: 'Good after'},
-        {id: 6, message: 'List'}
-    ]
-*/
+    let addDialogItem = () => {
+        let text = NewDialogItem.current.value;
+    };
+
+
     /* массив реакт jsx компонентов */
     let dialogElements = props.dialogStat.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
 
     let messagesElement = props.dialogStat.messageData.map(mes=><Message message={mes.message}/>)
     return (
         <div className={d.dialogs}>
+
+            <h3>список диалогов</h3>
+            <div>
+                <div className="card-body table-responsive">
+
+                    <textarea ref={ NewDialogItem }></textarea>
+
+
+
+                </div>
+                <div>
+                    {/* концепция callbeck-ов когда мы не вызываем функцию а отдаем её кому-то
+                        чтобы ее этот кто-то вызвал.  addNewOffers  без скобок просто отдаем функцию*/}
+                    <button onClick={ addDialogItem }>Добавить диалог</button>
+                </div>
+            </div>
+
+
+
+
             <div className={d.dialogsitems}>
                 {dialogElements}
             </div>

@@ -9,10 +9,14 @@ const Offers = (props) => {
                                                               supplierId={off.supplierId}
                                                               date={off.date}/>);
 
-    let addNewOffers = () => {
-        alert('Hey');
-    };
+    /*реакт создай ссылку*/
+    let NewOffers = React.createRef()
 
+    let addNewOffers = () => {
+
+        let text = NewOffers.current.value;
+        alert(text);
+    };
 
     return (
         <div class="card">
@@ -23,7 +27,9 @@ const Offers = (props) => {
                 <h3>список Offer</h3>
                 <div>
                     <div className="card-body table-responsive">
-                        <textarea></textarea>
+
+                        <textarea ref={NewOffers}></textarea>
+
                         <textarea></textarea>
                         <textarea></textarea>
                         <textarea></textarea>
@@ -32,7 +38,7 @@ const Offers = (props) => {
                     </div>
                     <div>
                         {/* концепция callbeck-ов когда мы не вызываем функцию а отдаем её кому-то
-                        чтобы ее этот кто-то вызвал. */}
+                        чтобы ее этот кто-то вызвал.  addNewOffers  без скобок просто отдаем функцию*/}
                         <button onClick={ addNewOffers }>Добавить в список</button>
                     </div>
                 </div>
