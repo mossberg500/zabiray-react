@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 
 
-let renderEntireTree = () => {
+let renderEntireTree = (state) => {
 
     ReactDOM.render(
         <React.StrictMode>
