@@ -6,7 +6,7 @@ import Offers from "./app/views/Offers/Offers";
 import Categories from "./app/views/categories/Categories";
 import Dialogs from "./app/components/Dialogs/Dialogs";
 import DialogItem from "./app/views/dialogItem/DialogItem";
-import Route from "react-router-dom/es/Route";
+import { Route } from "react-router-dom";
 import {BrowserRouter} from "react-router-dom";
 
 

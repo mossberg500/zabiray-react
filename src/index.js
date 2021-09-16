@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state, {addNewOffers, subscribe, updateNewOffers} from "./app/redux/state";
+import store from "./app/redux/state";
 import ReactDOM from "react-dom";
 import App from "./App";
 
@@ -10,19 +10,24 @@ let renderEntireTree = (state) => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state}
-                 addNewOffers={addNewOffers}
-                 updateNewOffers={updateNewOffers}
+            {/*здесь вызываем getState()*/}
+            <App state={store.getState()}
+                 /*а здесь не вызываем addNewOffers,
+                 а передаём параметром функцию - callback
+                  а также биндим функцию (связываем со стором )*/
+                 addNewOffers={store.addNewOffers.bind(store)}
+                 /*updateNewOffers - callback*/
+                 updateNewOffers={store.updateNewOffers.bind(store)}
             />
         </React.StrictMode>,
         document.getElementById('root')
     );
 
 }
-renderEntireTree(state);
+renderEntireTree(store.getState());
 
 //мы передаём одну фукцию renderEntireTree в другую subscribe - callback
-subscribe(renderEntireTree);
+store.subscribe(renderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -17,8 +17,8 @@ const Categories = () => {
                 <ul className="nav">
                     <li
                         className="nav-item pointer">
-                        <a class=" nav-link">
-                            <p><CategoryItem/></p>
+                        <a className=" nav-link">
+                            <CategoryItem/>
                         </a>
                     </li>
                 </ul>

@@ -28,11 +28,11 @@ const Offers = (props) => {
     }
 
     return (
-        <div class="card">
-            <div class="card-header card-header-warning">
-                <h4 class="card-title">Список задач</h4>
+        <div className="card">
+            <div className="card-header card-header-warning">
+                <h4 className="card-title">Список задач</h4>
             </div>
-            <div class="card-body table-responsive">
+            <div className="card-body table-responsive">
                 <h3>список Offer</h3>
                 <div>
                     <div className="card-body table-responsive">
