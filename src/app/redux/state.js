@@ -1,4 +1,8 @@
-import {renderEntireTree} from "../../render";
+import {observe} from "web-vitals/dist/modules/lib/observe";
+
+let renderEntireTree = () => {
+    console.log('State was changed');
+}
 
 let state = {
     dialogStat: {
@@ -31,7 +35,7 @@ let state = {
 
 window.state = state;
 
-export let addNewOffers = () => {
+export const addNewOffers = () => {
 
     let newOffer = {
         id: 5,
@@ -46,7 +50,7 @@ export let addNewOffers = () => {
 }
 
 
-export let updateNewOffers = (newname) => {
+export const updateNewOffers = (newname) => {
 
     state.offerStat.newOffersName = newname
 
@@ -64,6 +68,11 @@ export let updateNewOffers = (newname) => {
     renderEntireTree(state);
 }
 
+//subscribe - подписаться, observer - наблюдатеть, слушатель
+// и мы хотим его уведомить что что-то произошло
+export const subscribe = (observer) => {
+    renderEntireTree = observer;
 
+}
 
 export default state;
