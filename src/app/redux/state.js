@@ -29,10 +29,12 @@ let state = {
     },
 };
 
+window.state = state;
+
 export let addNewOffers = () => {
 
     let newOffer = {
-        id: '5',
+        id: 5,
         name: state.offerStat.newOffersName,
         categoryId: 'Электро',
         supplierId: 'Забирай',
