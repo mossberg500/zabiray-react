@@ -1,5 +1,8 @@
 const ADD_NEW_OFFERS = 'ADD-NEW-OFFERS';
 const UPDATE_NEW_OFFERS = 'UPDATE-NEW-OFFERS';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+
 
 let store ={
     _state: {
@@ -19,7 +22,8 @@ let store ={
                 {id: 4, message: 'Good moning'},
                 {id: 5, message: 'Good after'},
                 {id: 6, message: 'List'}
-            ]
+            ],
+            newMassageBody: ""
         },
         offerStat: {
             offers: [
@@ -44,25 +48,6 @@ let store ={
         this._callSubscriber = observer;
     },
 
-    /*addNewOffers() {
-   //     debugger;
-        let newOffer = {
-            id: 5,
-            name: this._state.offerStat.newOffersName,
-            categoryId: 'Электро',
-            supplierId: 'Забирай',
-            date: '13-09-2021'
-        };
-        this._state.offerStat.offers.push(newOffer);
-        this._state.offerStat.newOffersName='';
-        this._callSubscriber(this._state);
-    },
-    updateNewOffers(newname) {
-        this._state.offerStat.newOffersName = newname
-        this._callSubscriber(this._state);
-    },
-    */
-
     /*action - это объект(действие)*/
     dispatch(action) {
         if(action.type === ADD_NEW_OFFERS) {
@@ -79,6 +64,14 @@ let store ={
         } else if(action.type === UPDATE_NEW_OFFERS) {
             this._state.offerStat.newOffersName = action.newName
             this._callSubscriber(this._state);
+        } else if(action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialogStat.newMassageBody = action.body;
+            this._callSubscriber(this._state);
+        } else if(action.type === SEND_MESSAGE) {
+            let body = this._state.dialogStat.newMassageBody;
+            this._state.dialogStat.newMassageBody = '';
+            this._state.dialogStat.messageData.push({id: 1, message: body})
+            this._callSubscriber(this._state);
         }
     }
 }
@@ -86,6 +79,10 @@ let store ={
 export const addNewOffersActionCreator = () =>({ type: ADD_NEW_OFFERS })
 export const updateOffersActionCreator = (text) =>
     ({ type: UPDATE_NEW_OFFERS, newName: text })
+
+export const sendMessageCreator = () =>({ type: SEND_MESSAGE })
+export const updateNewMessageBodyCreator = (body) =>
+    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
 
 window.store = store;
 export default store;
