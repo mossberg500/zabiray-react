@@ -28,14 +28,21 @@ let store ={
             newOffersName: 'фиксированное значение'
         },
     },
-    getState() {
-   //     debugger;
-       return this._state;
-    },
     /*уведомить подписчика*/
     _callSubscriber() {
         console.log('State was changed')
     },
+
+
+    getState() {
+   //     debugger;
+       return this._state;
+    },
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
+
     addNewOffers() {
    //     debugger;
         let newOffer = {
@@ -53,9 +60,26 @@ let store ={
         this._state.offerStat.newOffersName = newname
         this._callSubscriber(this._state);
     },
-    subscribe(observer) {
-        this._callSubscriber = observer;
+    /*action - это объект(действие)*/
+    dispatch(action) {
+        if(action.type === 'ADD-NEW-OFFERS') {
+            let newOffer = {
+                id: 5,
+                name: this._state.offerStat.newOffersName,
+                categoryId: 'Электро',
+                supplierId: 'Забирай',
+                date: '13-09-2021'
+            };
+            this._state.offerStat.offers.push(newOffer);
+            this._state.offerStat.newOffersName='';
+            this._callSubscriber(this._state);
+        } else if(action.type === 'UPDATE-NEW-OFFERS') {
+            this._state.offerStat.newOffersName = action.newName
+            this._callSubscriber(this._state);
+        }
+
     }
+
 }
 window.store = store;
 
