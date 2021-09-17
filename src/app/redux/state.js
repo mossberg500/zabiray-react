@@ -1,3 +1,5 @@
+const ADD_NEW_OFFERS = 'ADD-NEW-OFFERS';
+const UPDATE_NEW_OFFERS = 'UPDATE-NEW-OFFERS';
 
 let store ={
     _state: {
@@ -42,8 +44,7 @@ let store ={
         this._callSubscriber = observer;
     },
 
-
-    addNewOffers() {
+    /*addNewOffers() {
    //     debugger;
         let newOffer = {
             id: 5,
@@ -60,9 +61,11 @@ let store ={
         this._state.offerStat.newOffersName = newname
         this._callSubscriber(this._state);
     },
+    */
+
     /*action - это объект(действие)*/
     dispatch(action) {
-        if(action.type === 'ADD-NEW-OFFERS') {
+        if(action.type === ADD_NEW_OFFERS) {
             let newOffer = {
                 id: 5,
                 name: this._state.offerStat.newOffersName,
@@ -73,14 +76,16 @@ let store ={
             this._state.offerStat.offers.push(newOffer);
             this._state.offerStat.newOffersName='';
             this._callSubscriber(this._state);
-        } else if(action.type === 'UPDATE-NEW-OFFERS') {
+        } else if(action.type === UPDATE_NEW_OFFERS) {
             this._state.offerStat.newOffersName = action.newName
             this._callSubscriber(this._state);
         }
-
     }
-
 }
-window.store = store;
 
+export const addNewOffersActionCreator = () =>({ type: ADD_NEW_OFFERS })
+export const updateOffersActionCreator = (text) =>
+    ({ type: UPDATE_NEW_OFFERS, newName: text })
+
+window.store = store;
 export default store;

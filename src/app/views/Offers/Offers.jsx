@@ -1,19 +1,25 @@
 import React from 'react';
 import './Offers.css';
 import Offer from "./Offer/Offer";
+import {addNewOffersActionCreator, updateOffersActionCreator} from "../../redux/state";
 
 const Offers = (props) => {
+
+
+
     let newOffers = props.offersStat.offers.map(off => <Offer id={off.id}
                                                               name={off.name}
                                                               categoryId={off.categoryId}
                                                               supplierId={off.supplierId}
                                                               date={off.date}/>);
 
+
+
     /*реакт создай ссылку*/
     let NewOffers = React.createRef();
 
     let addNewOffers = () => {
-        props.dispatch( {type: 'ADD-NEW-OFFERS'} );
+        props.dispatch(addNewOffersActionCreator());
         // очищаем поле
     //    props.updateNewOffers('')
         NewOffers.current.value=''
@@ -21,7 +27,8 @@ const Offers = (props) => {
 
     let onChangeOffers = () => {
         let text = NewOffers.current.value;
-        let action = {type: 'UPDATE-NEW-OFFERS', newName: text};
+  //      let action = {type: 'UPDATE-NEW-OFFERS', newName: text};
+        let action = updateOffersActionCreator(text);
         props.dispatch( action )
     }
 
