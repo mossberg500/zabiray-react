@@ -13,18 +13,16 @@ const Offers = (props) => {
     let NewOffers = React.createRef();
 
     let addNewOffers = () => {
-       /* let text = NewOffers.current.value;*/
-        /*alert(text);*/
-        /*передаем данные в функцию из stat-ов*/
-        props.addNewOffers();
+        props.dispatch( {type: 'ADD-NEW-OFFERS'} );
         // очищаем поле
-        props.updateNewOffers('')
+    //    props.updateNewOffers('')
         NewOffers.current.value=''
     }
 
     let onChangeOffers = () => {
         let text = NewOffers.current.value;
-        props.updateNewOffers(text)
+        let action = {type: 'UPDATE-NEW-OFFERS', newName: text};
+        props.dispatch( action )
     }
 
     return (
@@ -38,10 +36,8 @@ const Offers = (props) => {
                     <div className="card-body table-responsive">
 
                         {/*<textarea onChange={onChangeOffers} ref={NewOffers}value="фиксированное значение"/>*/}
-                        <textarea onChange={onChangeOffers} ref={NewOffers}value={props.newOffersName} />
-
-
-
+                        <textarea onChange={onChangeOffers} ref={NewOffers}
+                                  value={props.newOffersName} />
                     </div>
                     <div>
                         {/* концепция callbeck-ов когда мы не вызываем функцию а отдаем её кому-то

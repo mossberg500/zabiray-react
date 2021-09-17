@@ -12,13 +12,7 @@ let renderEntireTree = (state) => {
         <React.StrictMode>
             {/*здесь вызываем getState()*/}
             <App state={store.getState()}
-                 /*а здесь не вызываем addNewOffers,
-                 а передаём параметром функцию - callback
-                  а также биндим функцию (связываем со стором )*/
-                 addNewOffers={store.addNewOffers.bind(store)}
-                 /*updateNewOffers - callback*/
-                 updateNewOffers={store.updateNewOffers.bind(store)}
-            />
+                 dispatch={store.dispatch.bind(store)} />
         </React.StrictMode>,
         document.getElementById('root')
     );

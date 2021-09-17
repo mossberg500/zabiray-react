@@ -28,8 +28,7 @@ function App(props) {
                 <Route path='/dialogitem' render={ ()=> <DialogItem dialogStat={props.state.dialogStat} />} />
                 <Route path='/offers' render={ ()=> <Offers offersStat={props.state.offerStat}
                                                             newOffersName={props.state.newOffersName}
-                                                            updateNewOffers={props.updateNewOffers}
-                                                            addNewOffers={props.addNewOffers} />} />
+                                                            dispatch={props.dispatch}  />} />
 
             </div>
         </div>
