@@ -4,15 +4,12 @@ import DialogContext from "./DialogContext/DialogContext";
 import Message from "./Message/Message";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/mesage-reducer";
 
-
 const DialogItem = (props) => {
 
   //  let NewDialogItem = React.createRef();
-
   //  let addDialogItem = () => {
   //      let text = NewDialogItem.current.value;
  //   };
-
 
     /* массив реакт jsx компонентов */
     let dialogElements = props.dialogStat.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
