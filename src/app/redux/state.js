@@ -1,3 +1,6 @@
+import offerReducer from "./offer-reducer";
+import messageReducer from "./mesage-reducer";
+
 const ADD_NEW_OFFERS = 'ADD-NEW-OFFERS';
 const UPDATE_NEW_OFFERS = 'UPDATE-NEW-OFFERS';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
@@ -48,31 +51,11 @@ let store ={
         this._callSubscriber = observer;
     },
 
-    /*action - это объект(действие)*/
+    /*action - это объект(действие) у которого как минимум есть type*/
     dispatch(action) {
-        if(action.type === ADD_NEW_OFFERS) {
-            let newOffer = {
-                id: 5,
-                name: this._state.offerStat.newOffersName,
-                categoryId: 'Электро',
-                supplierId: 'Забирай',
-                date: '13-09-2021'
-            };
-            this._state.offerStat.offers.push(newOffer);
-            this._state.offerStat.newOffersName='';
-            this._callSubscriber(this._state);
-        } else if(action.type === UPDATE_NEW_OFFERS) {
-            this._state.offerStat.newOffersName = action.newName
-            this._callSubscriber(this._state);
-        } else if(action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogStat.newMassageBody = action.body;
-            this._callSubscriber(this._state);
-        } else if(action.type === SEND_MESSAGE) {
-            let body = this._state.dialogStat.newMassageBody;
-            this._state.dialogStat.newMassageBody = '';
-            this._state.dialogStat.messageData.push({id: 1, message: body})
-            this._callSubscriber(this._state);
-        }
+        this._state.offerStat = offerReducer(this._state.offerStat, action)
+        this._state.dialogStat = messageReducer(this._state.dialogStat, action)
+        this._callSubscriber(this._state);
     }
 }
 
