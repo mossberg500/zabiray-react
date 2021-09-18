@@ -1,7 +1,16 @@
 const ADD_NEW_OFFERS = 'ADD-NEW-OFFERS';
 const UPDATE_NEW_OFFERS = 'UPDATE-NEW-OFFERS';
 
-const offerReducer = (state, action) => {
+let initialState = {
+    offers: [
+        {id: '1', name: 'Одеяло', categoryId: 'Электроодеяло', supplierId: 'Забирай', date: '09-08-2021'},
+        {id: '2', name: 'Яблоко', categoryId: 'Продукты', supplierId: 'Забирай', date: '11-09-2021'},
+    ],
+    newOffersName: 'фиксированное значение'
+}
+
+
+const offerReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_OFFERS:
             let newOffer = {
