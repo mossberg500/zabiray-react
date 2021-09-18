@@ -1,12 +1,6 @@
 import offerReducer from "./offer-reducer";
 import messageReducer from "./mesage-reducer";
 
-const ADD_NEW_OFFERS = 'ADD-NEW-OFFERS';
-const UPDATE_NEW_OFFERS = 'UPDATE-NEW-OFFERS';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';
-
-
 let store ={
     _state: {
         dialogStat: {
@@ -42,7 +36,6 @@ let store ={
         console.log('State was changed')
     },
 
-
     getState() {
    //     debugger;
        return this._state;
@@ -50,7 +43,6 @@ let store ={
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-
     /*action - это объект(действие) у которого как минимум есть type*/
     dispatch(action) {
         this._state.offerStat = offerReducer(this._state.offerStat, action)
@@ -58,14 +50,5 @@ let store ={
         this._callSubscriber(this._state);
     }
 }
-
-export const addNewOffersActionCreator = () =>({ type: ADD_NEW_OFFERS })
-export const updateOffersActionCreator = (text) =>
-    ({ type: UPDATE_NEW_OFFERS, newName: text })
-
-export const sendMessageCreator = () =>({ type: SEND_MESSAGE })
-export const updateNewMessageBodyCreator = (body) =>
-    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
-
 window.store = store;
 export default store;

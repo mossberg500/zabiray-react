@@ -1,7 +1,7 @@
 import React from 'react';
 import './Offers.css';
 import Offer from "./Offer/Offer";
-import {addNewOffersActionCreator, updateOffersActionCreator} from "../../redux/state";
+import {addNewOffersActionCreator, updateOffersActionCreator} from "../../redux/offer-reducer";
 
 const Offers = (props) => {
 

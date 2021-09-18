@@ -15,10 +15,16 @@ const offerReducer = (state, action) => {
             state.newOffersName = '';
             return state;
         case UPDATE_NEW_OFFERS:
-                state.newOffersName = action.newName
-                return state;
+            state.newOffersName = action.newName
+            return state;
         default:
             return state;
     }
 }
+//  ActionCreator
+export const addNewOffersActionCreator = () => ({type: ADD_NEW_OFFERS})
+export const updateOffersActionCreator = (text) =>
+    ({type: UPDATE_NEW_OFFERS, newName: text})
+
+
 export default offerReducer;
