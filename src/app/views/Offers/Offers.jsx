@@ -1,35 +1,32 @@
 import React from 'react';
 import './Offers.css';
 import Offer from "./Offer/Offer";
-import {addNewOffersActionCreator, updateOffersActionCreator} from "../../redux/offer-reducer";
 
+// Profile* MyPosts
 const Offers = (props) => {
+    debugger;
 
-
-
-    let newOffers = props.offersStat.offers.map(off => <Offer id={off.id}
+    let OffersElements = props.offerStat.offers.map(off => <Offer id={off.id}
                                                               name={off.name}
                                                               categoryId={off.categoryId}
                                                               supplierId={off.supplierId}
                                                               date={off.date}/>);
 
-
-
     /*реакт создай ссылку*/
     let NewOffers = React.createRef();
 
+
     let addNewOffers = () => {
-        props.dispatch(addNewOffersActionCreator());
+         props.addOffer();
+
         // очищаем поле
-    //    props.updateNewOffers('')
-        NewOffers.current.value=''
+        //   props.newOffersName('')
+           NewOffers.current.value=''
     }
 
     let onChangeOffers = () => {
         let text = NewOffers.current.value;
-  //      let action = {type: 'UPDATE-NEW-OFFERS', newName: text};
-        let action = updateOffersActionCreator(text);
-        props.dispatch( action )
+        props.updateNewOffersName(text);
     }
 
     return (
@@ -44,19 +41,19 @@ const Offers = (props) => {
 
                         {/*<textarea onChange={onChangeOffers} ref={NewOffers}value="фиксированное значение"/>*/}
                         <textarea onChange={onChangeOffers} ref={NewOffers}
-                                  value={props.newOffersName} />
+                                  value={ props.newOffersName }/>
                     </div>
                     <div>
                         {/* концепция callbeck-ов когда мы не вызываем функцию а отдаем её кому-то
                         чтобы ее этот кто-то вызвал.  addNewOffers  без скобок просто отдаем функцию*/}
                         {/*<button onClick={ () => props.addNewOffers(NewOffers.current.value) }>Добавить в список</button>*/}
-                        <button onClick={ addNewOffers }>Добавить в список</button>
+                        <button onClick={addNewOffers}>Добавить в список</button>
                     </div>
                 </div>
 
 
-                <table class="table table-hover">
-                    <thead class="text-warning">
+                <table className="table table-hover">
+                    <thead className="text-warning">
                     <th>#</th>
                     <th>Название</th>
                     <th>Категория</th>
@@ -66,7 +63,7 @@ const Offers = (props) => {
                     </thead>
                     <tbody>
                     <tr>
-                        {newOffers}
+                        { OffersElements }
                     </tr>
                     </tbody>
                 </table>

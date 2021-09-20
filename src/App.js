@@ -1,13 +1,10 @@
 import React from 'react';
 import './App.css';
-
-
-import Offers from "./app/views/Offers/Offers";
 import Categories from "./app/views/categories/Categories";
 import Dialogs from "./app/components/Dialogs/Dialogs";
-import DialogItem from "./app/views/dialogItem/DialogItem";
-import { Route } from "react-router-dom";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
+import MyOffersContainer from "./app/views/Offers/MyOffersContainer";
+import DialogItemContainer from "./app/views/dialogItem/DialogItemContainer";
 
 
 function App(props) {
@@ -22,15 +19,41 @@ function App(props) {
                 <Categories/>
             </nav>
             <div className='content'>
-                {/*<Route path='/dialogitem' component={DialogItem} />
-                <Route path='/offers' component={Offers} />
-                */}
+
+  {/*              // Dialogs
                 <Route path='/dialogitem' render={ ()=> <DialogItem dialogStat={props.state.dialogStat}
                                                                     dispatch={props.dispatch} />} />
-                <Route path='/offers' render={ ()=> <Offers offersStat={props.state.offerStat}
+  */}
+
+
+{/*
+
+                // Profile* MyPosts
+                <Route path='/offers' render={ ()=> <MyOffersContainer offerStat={props.state.offerStat}
                                                             newOffersName={props.state.newOffersName}
                                                             dispatch={props.dispatch}  />} />
+*/}
 
+
+
+
+
+
+                {/*// Profile* MyPosts */}
+                <Route path='/offers' render={ ()=> <MyOffersContainer store={props.store} />} />
+
+
+                {/*// Dialogs*/}
+                <Route path='/dialogitem' render={ ()=> <DialogItemContainer store={props.store} />} />
+
+
+
+
+
+           {/*     <Route path='/dialogitem' render={ ()=> <DialogItem  />} />
+
+                <Route path='/offers' render={ ()=> <Offers  />} />
+*/}
             </div>
         </div>
         </BrowserRouter>

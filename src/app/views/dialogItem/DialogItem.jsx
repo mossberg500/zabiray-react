@@ -4,30 +4,34 @@ import DialogContext from "./DialogContext/DialogContext";
 import Message from "./Message/Message";
 import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/mesage-reducer";
 
+// Dialogs
 const DialogItem = (props) => {
 
-  //  let NewDialogItem = React.createRef();
-  //  let addDialogItem = () => {
-  //      let text = NewDialogItem.current.value;
- //   };
+    let state = props.dialogStat
 
     /* массив реакт jsx компонентов */
-    let dialogElements = props.dialogStat.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
+    let dialogElements = state.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
 
-    let messagesElement = props.dialogStat.messageData.map(mes=><Message message={mes.message}/>)
+    let messagesElement = state.messageData.map(mes=><Message message={mes.message}/>)
 
-    let newMessageBody = props.dialogStat.newMassageBody;
+    let newMessageBody = state.newMassageBody;
 
     let onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator())
+        props.sendMessage();
     }
 
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.dispatch(updateNewMessageBodyCreator(body))
+        props.updateNewMessageBody(body);
 
     }
 
+    let a = 3.14
+    let b = 0.3
+    let sum = (a, b) => {
+        return(
+        a/b*10000.678
+    )}
     return (
         <div className={d.dialogs}>
 
@@ -36,6 +40,7 @@ const DialogItem = (props) => {
                 <div className="card-body table-responsive">
 
                     <textarea></textarea>
+                    <p>{sum(a, b)}</p>
 
 
 
@@ -59,7 +64,7 @@ const DialogItem = (props) => {
                 <div>
                     <div><textarea value={newMessageBody}
                                    onChange={onNewMessageChange}
-                                   placeholder="Enter your massege" /> </div>
+                                   placeholder="Enter your message" /> </div>
                     <div><button onClick={onSendMessageClick}>Send</button></div>
                 </div>
             </div>
