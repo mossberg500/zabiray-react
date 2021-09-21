@@ -4,7 +4,7 @@ import Offer from "./Offer/Offer";
 
 // Profile* MyPosts
 const Offers = (props) => {
-    debugger;
+   // debugger;
 
     let OffersElements = props.offerStat.offers.map(off => <Offer id={off.id}
                                                               name={off.name}
@@ -21,7 +21,7 @@ const Offers = (props) => {
 
         // очищаем поле
         //   props.newOffersName('')
-           NewOffers.current.value=''
+        //   NewOffers.current.value=''
     }
 
     let onChangeOffers = () => {

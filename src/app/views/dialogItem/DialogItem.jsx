@@ -10,9 +10,9 @@ const DialogItem = (props) => {
     let state = props.dialogStat
 
     /* массив реакт jsx компонентов */
-    let dialogElements = state.dialogContextData.map( dialog=> <DialogContext id={dialog.id} name={dialog.name} /> );
+    let dialogElements = state.dialogContextData.map( dialog=> <DialogContext id={dialog.id} key={dialog.id} name={dialog.name} /> );
 
-    let messagesElement = state.messageData.map(mes=><Message message={mes.message}/>)
+    let messagesElement = state.messageData.map(mes=><Message message={mes.message} key={mes.id} /> );
 
     let newMessageBody = state.newMassageBody;
 

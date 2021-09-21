@@ -12,6 +12,7 @@ let reducers = combineReducers({
 let redux_store = createStore(reducers);
 
 
-
+let store = createStore(reducers);
+window.store = store;
 
 export default redux_store;

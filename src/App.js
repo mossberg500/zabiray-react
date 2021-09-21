@@ -10,7 +10,7 @@ import DialogItemContainer from "./app/views/dialogItem/DialogItemContainer";
 function App(props) {
 
     return (
-        <BrowserRouter>
+
         <div className='app-wrapper'>
             <div className='header'>
             <Dialogs />
@@ -56,7 +56,7 @@ function App(props) {
 */}
             </div>
         </div>
-        </BrowserRouter>
+
     );
 }
 

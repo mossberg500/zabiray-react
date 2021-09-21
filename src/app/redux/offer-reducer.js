@@ -11,8 +11,10 @@ let initialState = {
 
 
 const offerReducer = (state = initialState, action) => {
+
+
     switch (action.type) {
-        case ADD_NEW_OFFERS:
+        case ADD_NEW_OFFERS: {
             let newOffer = {
                 id: 5,
                 name: state.newOffersName,
@@ -20,12 +22,21 @@ const offerReducer = (state = initialState, action) => {
                 supplierId: 'Забирай',
                 date: '13-09-2021'
             };
-            state.offers.push(newOffer);
-            state.newOffersName = '';
-            return state;
-        case UPDATE_NEW_OFFERS:
-            state.newOffersName = action.newName
-            return state;
+            let stateCopy = {
+                ...state,
+                offers: [...state.offers, newOffer],
+                newOffersName: ''
+            };
+
+            return stateCopy;
+        }
+
+        case UPDATE_NEW_OFFERS: {
+            return  {
+                ...state,
+                newOffersName: action.newName
+            };
+        }
         default:
             return state;
     }
