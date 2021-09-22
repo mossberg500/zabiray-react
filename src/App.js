@@ -7,59 +7,35 @@ import MyOffersContainer from "./app/views/Offers/MyOffersContainer";
 import DialogItemContainer from "./app/views/dialogItem/DialogItemContainer";
 
 
-function App(props) {
+function App() {
 
     return (
 
         <div className='app-wrapper'>
             <div className='header'>
-            <Dialogs />
+                <Dialogs/>
             </div>
             <nav className='nav'>
                 <Categories/>
             </nav>
             <div className='content'>
-
-  {/*              // Dialogs
-                <Route path='/dialogitem' render={ ()=> <DialogItem dialogStat={props.state.dialogStat}
-                                                                    dispatch={props.dispatch} />} />
-  */}
-
-
-{/*
+                {/*
 
                 // Profile* MyPosts
-                <Route path='/offers' render={ ()=> <MyOffersContainer offerStat={props.state.offerStat}
-                                                            newOffersName={props.state.newOffersName}
-                                                            dispatch={props.dispatch}  />} />
-*/}
-
-
-
-
-
-
-                {/*// Profile* MyPosts */}
                 <Route path='/offers' render={ ()=> <MyOffersContainer store={props.store} />} />
 
-
-                {/*// Dialogs*/}
+                // Dialogs
                 <Route path='/dialogitem' render={ ()=> <DialogItemContainer store={props.store} />} />
-
-
-
-
-
-           {/*     <Route path='/dialogitem' render={ ()=> <DialogItem  />} />
-
-                <Route path='/offers' render={ ()=> <Offers  />} />
 */}
+                {/*// Profile* MyPosts */}
+                <Route path='/offers' render={() => <MyOffersContainer/>}/>
+                {/*// Dialogs*/}
+                <Route path='/dialogitem' render={() => <DialogItemContainer/>}/>
             </div>
         </div>
 
     );
 }
-
 
 
 export default App;
