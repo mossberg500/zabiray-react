@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import Categories from "./app/views/categories/Categories";
 import Dialogs from "./app/components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import MyOffersContainer from "./app/views/Offers/MyOffersContainer";
 import DialogItemContainer from "./app/views/dialogItem/DialogItemContainer";
+import UsersContainer from "./app/views/users/UsersContainer";
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
                 <Route path='/offers' render={() => <MyOffersContainer/>}/>
                 {/*// Dialogs*/}
                 <Route path='/dialogitem' render={() => <DialogItemContainer/>}/>
+                {/*// Users*/}
+                <Route path='/users' render={() => <UsersContainer /> }/>
             </div>
         </div>
 
