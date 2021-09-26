@@ -1,9 +1,21 @@
 import React from "react";
 import styles from './Users.module.css'
+import * as axios from 'axios'
 
 let Users = (props) => {
-    return (
-        <div>
+
+    let getUsers = () => {
+        if (props.users.length === 0) {
+
+            axios.get("http://localhost:8082/users/all")
+                .then(response => {
+
+                    props.setUsers(response.data)
+                });
+        }
+    }
+    return <div>
+        <button onClick={getUsers}>Get Users</button>
             {
                 props.users.map(u => <div key={u.id}>
                     <span>
@@ -25,13 +37,10 @@ let Users = (props) => {
                              <div>{u.location.country}</div>
                             <div>{u.location.city}</div>
                         </span>
-
                     </span>
-
-
                 </div>)
             }
         </div>
-    )
+
 }
 export default Users;
