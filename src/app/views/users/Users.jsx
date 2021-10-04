@@ -5,28 +5,45 @@ import userPhoto from "../../../assets/img/krasnyy.png";
 
 class Users extends React.Component {
 
-
-    /*  getUsers = () => {
-          if (this.props.users.length === 0) {
-              axios.get("http://localhost:8082/users/all")
-                  .then(response => {
-                      this.props.setUsers(response.data)
-                  });
-          }
-      }
-    */
     constructor(props) {
         super(props);
-        axios.get("http://localhost:8082/users/all")
+    }
+
+    componentDidMount() {
+        axios.post(`http://localhost:8082/users/get?pageNumber=${this.props.pageNumber}&pageSize=${this.props.pageSize}`)
             .then(response => {
-                this.props.setUsers(response.data)
+                this.props.setUsers(response.data.content);
+                this.props.setTotalElements(response.data.totalElements);
+
+                    console.log(response.data)
             });
 
     }
 
+    onPageChanged = (pageNumber) => {
+        this.props.setPageNumber(pageNumber);
+        axios.post(`http://localhost:8082/users/get?pageNumber=${pageNumber}&pageSize=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.content)
+                console.log(response.data)
+            });
+    }
+
     render() {
+        let pagesCount = Math.ceil(this.props.totalElements / this.props.pageSize)
+        let pages = [];
+        for(let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
         return <div>
-            {/* <button onClick={this.getUsers}>Get Users</button>*/}
+            <span>Где то тут циферки { pages.length }</span>
+            <div>
+                {pages.map(p => {
+                     return <span className={this.props.pageNumber === (p) && styles.selectedPage}
+                     onClick={ (e)=>{ this.onPageChanged(p); } }>  {p}  </span>
+                    }
+                )}
+            </div>
             {
                 this.props.users.map(u => <div key={u.id}>
                     <span>

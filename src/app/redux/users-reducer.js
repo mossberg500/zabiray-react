@@ -1,11 +1,18 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS= 'SET-USERS'
+const SET_PAGE_NUMBER= 'SET-PAGE-NUMBER'
+const SET_TOTAL_ELEMENTS= 'SET-TOTAL-ELEMENTS'
 
 
 let initialState = {
+    users: [],
 
-    users: []
+    pageNumber: 1,
+    pageSize: 5,
+
+    totalPages: 5,
+    totalElements: 20
 
     /*users: [
         { id: '1', photoUrl: 'https://zabiray.com.ua/image/cache/catalog/YML441a46fc0209632b8c44dc67b38db78a/1115/IMGaa1e335324adeb1aad1f8c399af1782b-800x800.jpg', followed: false, fullName: 'Dmitry', status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
@@ -38,8 +45,16 @@ const usersReducer = (state = initialState, action) => {
                 })
             }
         case SET_USERS: {
-            return { ...state, users: [ ...action.users, ...action.users] }
+            /*return { ...state, users: [ ...state.users, ...action.users] }*/
+            return { ...state, users: [...action.users] }
         }
+        case SET_PAGE_NUMBER: {
+            return { ...state, pageNumber: action.pageNumber }
+        }
+        case SET_TOTAL_ELEMENTS: {
+            return { ...state, totalElements: action.totalEl }
+        }
+
 
         default:
             return state;
@@ -49,6 +64,8 @@ const usersReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({type: FOLLOW, userId})
 export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
 export const setUsersAC = (users) => ({type: SET_USERS, users})
+export const setPageNumberAC = (pageNumber) => ({type: SET_PAGE_NUMBER, pageNumber: pageNumber})
+export const setTotalElementsAC = (totalElements) => ({type: SET_TOTAL_ELEMENTS, totalEl: totalElements})
 
 
 export default usersReducer;

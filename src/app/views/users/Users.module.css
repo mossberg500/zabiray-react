@@ -5,3 +5,7 @@
 div {
     padding-left: 15pt;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
