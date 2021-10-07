@@ -44,7 +44,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return <>
-            {this.props.isFetching ? <Preloader />  : null}
+            {this.props.isFetching ? <Preloader/> : null}
             <Users totalElements={this.props.totalElements}
                    pageSize={this.props.pageSize}
                    pageNumber={this.props.pageNumber}
@@ -70,6 +70,8 @@ let mapStateToProps = (state) => {
 
     }
 }
+/*
+
 let mapDispatchToProps = (dispatch) => {
     return {
         follow: (userId) => {
@@ -92,5 +94,14 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
+*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+        follow: followAC,
+        unfollow: unfollowAC,
+        setUsers: setUsersAC,
+        setPageNumber: setPageNumberAC,
+        setTotalElements: setTotalElementsAC,
+        setIsFetching: setIsFetchingAC
+
+    })(UsersContainer);
