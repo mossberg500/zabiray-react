@@ -3,23 +3,16 @@ const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS= 'SET-USERS'
 const SET_PAGE_NUMBER= 'SET-PAGE-NUMBER'
 const SET_TOTAL_ELEMENTS= 'SET-TOTAL-ELEMENTS'
-
+const TOGGLE_IS_FETCHING= 'TOGGLE-IS-FETCHING'
 
 let initialState = {
     users: [],
-
     pageNumber: 1,
     pageSize: 5,
 
     totalPages: 5,
-    totalElements: 20
-
-    /*users: [
-        { id: '1', photoUrl: 'https://zabiray.com.ua/image/cache/catalog/YML441a46fc0209632b8c44dc67b38db78a/1115/IMGaa1e335324adeb1aad1f8c399af1782b-800x800.jpg', followed: false, fullName: 'Dmitry', status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-        { id: '2', photoUrl: 'https://zabiray.com.ua/image/cache/catalog/YML441a46fc0209632b8c44dc67b38db78a/1115/IMGaa1e335324adeb1aad1f8c399af1782b-800x800.jpg', followed: false, fullName: 'Sasha', status: 'I am from', location: {city: 'Kiev', country: 'Ukraine'}},
-        {id: '3', photoUrl: 'https://zabiray.com.ua/image/cache/catalog/YML441a46fc0209632b8c44dc67b38db78a/1115/IMGaa1e335324adeb1aad1f8c399af1782b-800x800.jpg', followed: true, fullName: 'Oleg', status: 'I am too', location: {city: 'Dnepr', country: 'Ukraine'}},
-        {id: '4', photoUrl: 'https://zabiray.com.ua/image/cache/catalog/YML441a46fc0209632b8c44dc67b38db78a/1115/IMGaa1e335324adeb1aad1f8c399af1782b-800x800.jpg', followed: false, fullName: 'Vlad', status: 'I am ', location: {city: 'Soho', country: 'Belgium'}},
-    ]*/
+    totalElements: 20,
+    isFetching: false
 };
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -54,6 +47,9 @@ const usersReducer = (state = initialState, action) => {
         case SET_TOTAL_ELEMENTS: {
             return { ...state, totalElements: action.totalEl }
         }
+        case TOGGLE_IS_FETCHING: {
+            return { ...state, isFetching: action.isFetching }
+        }
 
 
         default:
@@ -66,6 +62,7 @@ export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
 export const setUsersAC = (users) => ({type: SET_USERS, users})
 export const setPageNumberAC = (pageNumber) => ({type: SET_PAGE_NUMBER, pageNumber: pageNumber})
 export const setTotalElementsAC = (totalElements) => ({type: SET_TOTAL_ELEMENTS, totalEl: totalElements})
+export const setIsFetchingAC = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching: isFetching})
 
 
 export default usersReducer;

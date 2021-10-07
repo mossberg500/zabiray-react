@@ -1,8 +1,16 @@
 import React from "react";
-import { connect } from "react-redux";
-import {followAC, setPageNumberAC, setTotalElementsAC, setUsersAC, unfollowAC} from "../../redux/users-reducer";
+import {connect} from "react-redux";
+import {
+    followAC,
+    setIsFetchingAC,
+    setPageNumberAC,
+    setTotalElementsAC,
+    setUsersAC,
+    unfollowAC
+} from "../../redux/users-reducer";
 import * as axios from "axios";
 import Users from "./Users";
+import Preloader from "../../common/Preloader/Preloader";
 
 class UsersContainer extends React.Component {
 
@@ -11,8 +19,10 @@ class UsersContainer extends React.Component {
     }
 
     componentDidMount() {
+        this.props.setIsFetching(true);
         axios.post(`http://localhost:8082/users/get?pageNumber=${this.props.pageNumber}&pageSize=${this.props.pageSize}`)
             .then(response => {
+                this.props.setIsFetching(false);
                 this.props.setUsers(response.data.content);
                 this.props.setTotalElements(response.data.totalElements);
 
@@ -23,23 +33,29 @@ class UsersContainer extends React.Component {
 
     onPageChanged = (pageNumber) => {
         this.props.setPageNumber(pageNumber);
+        this.props.setIsFetching(true);
         axios.post(`http://localhost:8082/users/get?pageNumber=${pageNumber}&pageSize=${this.props.pageSize}`)
             .then(response => {
+                this.props.setIsFetching(false);
                 this.props.setUsers(response.data.content)
                 console.log(response.data)
             });
     }
 
     render() {
-        return <Users totalElements={this.props.totalElements}
-                      pageSize={this.props.pageSize}
-                      pageNumber={this.props.pageNumber}
-                      unfollow={this.props.unfollow}
-                      follow={this.props.follow}
-                      onPageChanged={this.onPageChanged}
-                      users={this.props.users}
+        return <>
+            {this.props.isFetching ? <Preloader />  : null}
+            <Users totalElements={this.props.totalElements}
+                   pageSize={this.props.pageSize}
+                   pageNumber={this.props.pageNumber}
+                   unfollow={this.props.unfollow}
+                   follow={this.props.follow}
+                   onPageChanged={this.onPageChanged}
+                   users={this.props.users}
 
-        />
+
+            />
+        </>
     }
 }
 
@@ -49,12 +65,13 @@ let mapStateToProps = (state) => {
         pageNumber: state.usersPage.pageNumber,
         pageSize: state.usersPage.pageSize,
         totalElements: state.usersPage.totalElements,
-        totalPages: state.usersPage.totalPages
+        totalPages: state.usersPage.totalPages,
+        isFetching: state.usersPage.isFetching
 
     }
 }
 let mapDispatchToProps = (dispatch) => {
-    return{
+    return {
         follow: (userId) => {
             dispatch(followAC(userId));
         },
@@ -69,6 +86,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         setTotalElements: (totalElements) => {
             dispatch(setTotalElementsAC(totalElements));
+        },
+        setIsFetching: (isFetching) => {
+            dispatch(setIsFetchingAC(isFetching))
         }
     }
 }
