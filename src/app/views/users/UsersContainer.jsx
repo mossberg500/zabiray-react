@@ -97,11 +97,11 @@ let mapDispatchToProps = (dispatch) => {
 */
 
 export default connect(mapStateToProps, {
-        follow: follow,
-        unfollow: unfollow,
-        setUsers: setUsers,
-        setPageNumber: setPageNumber,
-        setTotalElements: setTotalElements,
-        setIsFetching: setIsFetching
+        follow,
+        unfollow,
+        setUsers,
+        setPageNumber,
+        setTotalElements,
+        setIsFetching
 
     })(UsersContainer);
