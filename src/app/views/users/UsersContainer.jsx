@@ -22,11 +22,12 @@ class UsersContainer extends React.Component {
         this.props.setIsFetching(true);
         axios.post(`http://localhost:8082/users/get?pageNumber=${this.props.pageNumber}&pageSize=${this.props.pageSize}`)
             .then(response => {
+           //     debugger;
                 this.props.setIsFetching(false);
                 this.props.setUsers(response.data.content);
                 this.props.setTotalElements(response.data.totalElements);
 
-                console.log(response.data)
+             //   console.log(response.data)
             });
 
     }
@@ -38,7 +39,7 @@ class UsersContainer extends React.Component {
             .then(response => {
                 this.props.setIsFetching(false);
                 this.props.setUsers(response.data.content)
-                console.log(response.data)
+
             });
     }
 

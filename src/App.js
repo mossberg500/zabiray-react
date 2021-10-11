@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Categories from "./app/views/categories/Categories";
 import Dialogs from "./app/components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import MyOffersContainer from "./app/views/Offers/MyOffersContainer";
 import DialogItemContainer from "./app/views/dialogItem/DialogItemContainer";
 import UsersContainer from "./app/views/users/UsersContainer";
+import CategoriesContainer from "./app/views/categories/CategoriesContainer";
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
                 <Dialogs/>
             </div>
             <nav className='nav'>
-                <Categories/>
+                <CategoriesContainer />
             </nav>
             <div className='content'>
                 {/*
