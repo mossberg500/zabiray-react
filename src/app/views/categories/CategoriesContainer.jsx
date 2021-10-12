@@ -9,18 +9,7 @@ class CategoriesContainer extends React.Component {
 
     constructor(props) {
         super(props);
-      /*  //    this.props.setIsFetching(true);
-        axios.get(`http://localhost:8082/category/all`)
-            .then(response => {
-                //             this.props.setIsFetching(false);
-                debugger;
-                this.props.setCategories(response.data)
 
-                //this.props.setTotalElements(response.data.totalElements);
-
-                console.log(response.data)
-
-            });*/
     }
 
     componentDidMount() {
@@ -29,11 +18,8 @@ class CategoriesContainer extends React.Component {
                 //             this.props.setIsFetching(false);
                 debugger;
                 this.props.setCategories(response.data)
-
                 //this.props.setTotalElements(response.data.totalElements);
-
                 console.log(response.data)
-
             });
 
     }
@@ -41,12 +27,9 @@ class CategoriesContainer extends React.Component {
     render() {
         console.log(this.props.categories)
         debugger;
-
         return <>
-
            {/* {this.props.isFetching ? <Preloader/> : null}*/}
             <Categories
-
                 categories={ this.props.categories }
             />
         </>

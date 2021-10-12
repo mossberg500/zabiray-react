@@ -12,14 +12,15 @@ function App() {
 
     return (
 
-        <div className='app-wrapper'>
-            <div className='header'>
+        <div className='app-wrapper1'>
+            <div className='header1'>
                 <Dialogs/>
             </div>
-            <nav className='nav'>
-                <CategoriesContainer />
+            <nav className='nav1'>
+                {/*<CategoriesContainer />*/}
+                <Route path='/categories' render={() => <CategoriesContainer />}/>
             </nav>
-            <div className='content'>
+            <div className='cont'>
                 {/*
 
                 // Profile* MyPosts

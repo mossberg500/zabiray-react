@@ -1,4 +1,10 @@
-.headercon a {
+.diag {
+    height: 700px;
+}
+
+
+.headercon  {
+    height: 20px;
     grid-area: c;
   /*  background-color: #7ea1bd;*/
     color: #ce8383;

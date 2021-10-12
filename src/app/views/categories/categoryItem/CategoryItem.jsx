@@ -1,15 +1,18 @@
 import React from 'react';
 import classes from './CategoryItem.module.css'
+import {NavLink} from "react-router-dom";
 
 const CategoryItem = (props) => {
-    debugger;
+  //  debugger;
     return (
         <div>
+            <NavLink to={'/categories/' + props.id} >
             {
         <div className={`${classes.item} ${classes.active}`}>
-                        <h2>{ props.nameCategory }</h2>
+                        { props.nameCategory }
                     </div>
             }
+            </NavLink>
         </div>
     )
 

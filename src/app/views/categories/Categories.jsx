@@ -28,7 +28,9 @@ const Categories = (props) => {
                         <li
                             className="nav-item pointer">
                             <a className=" nav-link">
-                                { off.nameCategory }
+                               <CategoryItem id={ off.id }
+                                             nameCategory={ off.nameCategory }
+                                            />
                             </a>
                         </li>
                         </div>)

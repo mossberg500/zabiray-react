@@ -1,7 +1,8 @@
 .item {
     color: #6ec071;
+    font-size: 21px;
 }
 .item.active {
-    color: #cc5275;
+    color: #020001;
 
 }
