@@ -6,6 +6,7 @@ import MyOffersContainer from "./app/views/Offers/MyOffersContainer";
 import DialogItemContainer from "./app/views/dialogItem/DialogItemContainer";
 import UsersContainer from "./app/views/users/UsersContainer";
 import CategoriesContainer from "./app/views/categories/CategoriesContainer";
+import ListOfOffersFCategoriesContainer from "./app/views/listofoffersfromcategories/ListOfOffersFCategoriesContainer";
 
 
 function App() {
@@ -16,10 +17,13 @@ function App() {
             <div className='header1'>
                 <Dialogs/>
             </div>
+
             <nav className='nav1'>
                 {/*<CategoriesContainer />*/}
                 <Route path='/categories' render={() => <CategoriesContainer />}/>
             </nav>
+
+
             <div className='cont'>
                 {/*
 
@@ -35,7 +39,12 @@ function App() {
                 <Route path='/dialogitem' render={() => <DialogItemContainer/>}/>
                 {/*// Users*/}
                 <Route path='/users' render={() => <UsersContainer /> }/>
+
+                <Route path='/categories/:categId?' render={() => <ListOfOffersFCategoriesContainer /> }/>
+
             </div>
+
+
         </div>
 
     );
