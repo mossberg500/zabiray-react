@@ -7,6 +7,7 @@ import DialogItemContainer from "./app/views/dialogItem/DialogItemContainer";
 import UsersContainer from "./app/views/users/UsersContainer";
 import CategoriesContainer from "./app/views/categories/CategoriesContainer";
 import ListOfOffersFCategoriesContainer from "./app/views/listofoffersfromcategories/ListOfOffersFCategoriesContainer";
+import OffersDetailContainer from "./app/views/listofoffersfromcategories/detailoffers/OffersDetailContainer";
 
 
 function App() {
@@ -41,6 +42,8 @@ function App() {
                 <Route path='/users' render={() => <UsersContainer /> }/>
 
                 <Route path='/categories/:categId?' render={() => <ListOfOffersFCategoriesContainer /> }/>
+
+                <Route path='/offerdetail/:offId?' render={() => <OffersDetailContainer /> }/>
 
             </div>
 

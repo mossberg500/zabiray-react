@@ -1,11 +1,12 @@
-import React from "react";
-import s from './LIstOffersFCatwgories.css';
-import Preloader from "../../common/Preloader/Preloader";
-import ListOfOffers from "./listofoffers/ListOfOffers";
+import React from 'react';
+import ListOfOffers from './listofoffers/ListOfOffers';
+import Spinner2 from '../../common/Preloader/Spinner2';
+import c from './LIstOffersFCatwgories.module.css'
+import {NavLink} from "react-router-dom";
 
 const ListOfOffersFCategories = (props) => {
     if(!props.totalElements) {
-        return <Preloader />
+        return <Spinner2 />
     }
     //debugger;
     return (
@@ -30,11 +31,12 @@ const ListOfOffersFCategories = (props) => {
                             <td className="td">{off.id}</td>
 
                             <td className="td">{off.priceId}</td>
-                            <td className="td">{off.name}</td>
+                            <NavLink to={'/offerdetail/' + off.id}
+                            ><td className="td">{off.name}</td></NavLink>
                             <td className="td"><ListOfOffers price={ props.price } /> </td>
                             <td className="td">{off.categoryById}</td>
                             <td className="td">{off.vendor}</td>
-                            <td className="td"><img className="img" src={off.picture} /></td>
+                            <td className="td"><img className={c.img} src={off.picture} /></td>
 
                         </tr>)
                         }

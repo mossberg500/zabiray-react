@@ -17,6 +17,7 @@ class ListOfOffersFCategoriesContainer extends React.Component {
         pageSize: 5
     }
 
+
     componentDidUpdate(prevProps,prevState) {
       //  console.log(this.props.match.params.categId)
         if (prevProps.match.params.categId !== this.props.match.params.categId) {
@@ -40,6 +41,7 @@ class ListOfOffersFCategoriesContainer extends React.Component {
 
         }
     }
+
 
 
 
